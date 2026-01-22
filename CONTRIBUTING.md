@@ -6,7 +6,7 @@
 
 ### Reportar Bugs
 
-1. Verifica que el bug no haya sido reportado antes en [Issues](https://github.com/RogerF5/WebSecAuditSuite/issues)
+1. Verifica que el bug no haya sido reportado antes en [Issues](https://github.com/RogerF5-Security/WebSecAudit-RF/tree/main/issues)
 2. Crea un nuevo issue con el template de bug report
 3. Incluye:
    - Descripción detallada del bug
