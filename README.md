@@ -4,27 +4,61 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/RogerF5/WebSecAuditSuite)
 
-**Suite profesional de auditoría de seguridad web** con interfaz gráfica moderna, detección avanzada de vulnerabilidades, evasión de WAF y generación de reportes ejecutivos HTML.
-
+**Suite de auditoría de seguridad web** con interfaz gráfica, detección avanzada de vulnerabilidades, evasión de WAF y generación de reportes ejecutivos HTML.
 Desarrollado por **Roger F5** | [GitHub](https://github.com/RogerF5-Security)
-![WebSecAuditSuite Screenshot](docs/screenshot.png)
+---
+
 ## 📸 Galería de la Aplicación
 
-<details>
-<summary><b>👀 Haz clic aquí para ver las capturas de pantalla</b></summary>
-<br>
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <h3 align="center">🏠 Home</h3>
+      <img src="docs/Home.png" width="100%" alt="Pantalla de Inicio">
+      <p align="center">
+        Vista principal. Punto de partida centralizado para iniciar auditorías y escaneos rápidos.
+      </p>
+    </td>
+    <td width="33%" valign="top">
+      <h3 align="center">📊 Dashboard</h3>
+      <img src="docs/Dashboard.png" width="100%" alt="Dashboard de Seguridad">
+      <p align="center">
+        Métricas en tiempo real. Visualización gráfica de vulnerabilidades por severidad.
+      </p>
+    </td>
+    <td width="33%" valign="top">
+      <h3 align="center">radar Scanning</h3>
+      <img src="docs/Scanning.png" width="100%" alt="Consola de Escaneo">
+      <p align="center">
+        Terminal integrada. Muestra el progreso de inyecciones y payloads en tiempo real.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top">
+      <h3 align="center">🔐 Auth Manager</h3>
+      <img src="docs/Auth.png" width="100%" alt="Configuración de Autenticación">
+      <p align="center">
+        Gestión de Cookies, Headers y credenciales para auditar zonas protegidas.
+      </p>
+    </td>
+    <td width="33%" valign="top">
+      <h3 align="center">⚙️ Settings</h3>
+      <img src="docs/Settings.png" width="100%" alt="Ajustes de la Aplicación">
+      <p align="center">
+        Control total. Configura concurrencia, timeouts, proxys y niveles de evasión.
+      </p>
+    </td>
+    <td width="33%" valign="top">
+      <h3 align="center">📄 HTML Report</h3>
+      <img src="docs/Report.png" width="100%" alt="Reporte Final">
+      <p align="center">
+        Resultados profesionales. Genera informes detallados listos para presentar al cliente.
+      </p>
+    </td>
+  </tr>
+</table>
 
-| **Inicio & Dashboard** | **Escaneo & Configuración** |
-|:---:|:---:|
-| <img src="./Home.png" width="400"> <br> *Vista Principal* | <img src="./Scanning.png" width="400"> <br> *Escaneo en Tiempo Real* |
-| <img src="./Dashboard.png" width="400"> <br> *Métricas de Seguridad* | <img src="./Settings.png" width="400"> <br> *Ajustes Avanzados* |
-
-| **Reportes & Autenticación** |
-|:---:|
-| <img src="./Report.png" width="850"> <br> *Reporte Ejecutivo Generado* |
-| <img src="./Auth.png" width="850"> <br> *Gestión de Credenciales* |
-
-</details>
 ---
 
 ## 📋 Tabla de Contenidos
