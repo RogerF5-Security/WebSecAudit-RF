@@ -642,6 +642,4 @@ in the Software without restriction...
 
 **Hecho con ❤️ por Roger F5**
 
-[⬆ Volver arriba](#️-websecauditsuite-v20-professional)
-
 </div>
