@@ -8,7 +8,6 @@
 
 Desarrollado por **Roger F5** | [GitHub](https://github.com/RogerF5)
 
-![WebSecAuditSuite Screenshot](docs/screenshot.png)
 
 ---
 
@@ -81,7 +80,7 @@ Desarrollado por **Roger F5** | [GitHub](https://github.com/RogerF5)
 
 ```bash
 # 1. Clonar repositorio
-git clone https://github.com/RogerF5/WebSecAuditSuite.git
+git clone https://github.com/RogerF5/WebSecAudit-RF.git
 cd WebSecAuditSuite
 
 # 2. Crear entorno virtual (recomendado)
