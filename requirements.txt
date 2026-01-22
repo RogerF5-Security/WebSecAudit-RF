@@ -1,0 +1,16 @@
+aiohttp==3.9.1
+aiohttp-socks==0.8.4
+brotli==1.1.0
+brotlipy==0.7.0
+beautifulsoup4==4.12.2
+customtkinter==5.2.1
+matplotlib==3.8.2
+Pillow==10.1.0
+pycryptodome==3.19.0
+PyPDF2==3.0.1
+python-docx==1.1.0
+openpyxl==3.1.2
+lxml==4.9.3
+jinja2==3.1.2
+aiodns==3.1.1
+cchardet==2.1.7
