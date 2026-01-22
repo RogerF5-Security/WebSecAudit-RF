@@ -1,5 +1,5 @@
 """
-WebSecAuditSuite - Suite Profesional de Auditoría Web
+WebSecAudit-RF
 Developed by Roger F5
 """
 import asyncio
@@ -50,7 +50,7 @@ class WebSecAuditSuite(ctk.CTk):
         super().__init__()
         
         # Configuración ventana
-        self.title("WebSecAuditSuite v2.0 Professional | by Roger F5")
+        self.title("WebSecAudit-RF")
         self.geometry("1400x900")
         
         # Variables
@@ -59,6 +59,7 @@ class WebSecAuditSuite(ctk.CTk):
         self.auth_manager = AuthenticationManager()
         self.settings_manager = SettingsManager()
         self.scan_running = False
+        self.stop_scan_flag = False  # Flag para detener escaneo
         
         # Registrar plugins
         self._register_plugins()
@@ -118,7 +119,7 @@ class WebSecAuditSuite(ctk.CTk):
         
         version_label = ctk.CTkLabel(
             self.sidebar,
-            text="v2.0 Professional",
+            text="Beta",
             font=ctk.CTkFont(size=10),
             text_color="#888888"
         )
@@ -203,6 +204,21 @@ class WebSecAuditSuite(ctk.CTk):
             text_color="#000000"
         )
         self.scan_button.pack(side=tk.LEFT, padx=10)
+        
+        # Botón de Stop
+        self.stop_button = ctk.CTkButton(
+            input_frame,
+            text="⛔ Stop Scan",
+            command=self._stop_scan,
+            font=ctk.CTkFont(size=14, weight="bold"),
+            height=40,
+            width=150,
+            fg_color="#ff4444",
+            hover_color="#cc0000",
+            text_color="#ffffff",
+            state="disabled"  # Deshabilitado por defecto
+        )
+        self.stop_button.pack(side=tk.LEFT, padx=10)
         
         # Info de plugins
         plugins_info_frame = ctk.CTkFrame(self.main_panel)
@@ -456,7 +472,9 @@ class WebSecAuditSuite(ctk.CTk):
             target_url = "https://" + target_url
         
         self.scan_running = True
+        self.stop_scan_flag = False  # Reset flag
         self.scan_button.configure(state="disabled", text="⏳ Scanning...")
+        self.stop_button.configure(state="normal")  # Habilitar botón Stop
         self.console_text.delete("1.0", tk.END)
         self._log_console(f"[INFO] Starting scan of {target_url}\n")
         
@@ -466,17 +484,39 @@ class WebSecAuditSuite(ctk.CTk):
         thread = threading.Thread(target=self._run_scan, args=(target_url, proxy_url), daemon=True)
         thread.start()
     
+    def _stop_scan(self):
+        """Detiene el escaneo en curso"""
+        if not self.scan_running:
+            return
+        
+        self.stop_scan_flag = True
+        self._log_console("\n[WARNING] ⛔ Stop requested by user...\n")
+        self._update_status("Stopping scan...")
+        self.stop_button.configure(state="disabled")
+        
+        # El escaneo se detendrá en el próximo checkpoint
+        logger.info("User requested scan stop")
+    
     def _run_scan(self, target_url, proxy_url):
         """Ejecuta el escaneo (en thread separado)"""
         try:
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
+            
+            # Pasar flag de stop al scanner
+            self.scanner_engine.stop_flag = self.stop_scan_flag
+            
             loop.run_until_complete(self.scanner_engine.scan(target_url, proxy_url))
             loop.close()
             
-            self._log_console("\n✅ Scan completed successfully!\n")
-            self._log_console(f"Total vulnerabilities found: {len(self.scanner_engine.all_findings)}\n")
-            messagebox.showinfo("Success", "Scan completed! Check Dashboard for results.")
+            if self.stop_scan_flag:
+                self._log_console("\n⛔ Scan stopped by user\n")
+                self._log_console(f"Partial results: {len(self.scanner_engine.all_findings)} vulnerabilities found\n")
+                messagebox.showinfo("Scan Stopped", "Scan stopped by user. Check partial results in Dashboard.")
+            else:
+                self._log_console("\n✅ Scan completed successfully!\n")
+                self._log_console(f"Total vulnerabilities found: {len(self.scanner_engine.all_findings)}\n")
+                messagebox.showinfo("Success", "Scan completed! Check Dashboard for results.")
             
         except Exception as e:
             logger.error(f"Scan error: {str(e)}", exc_info=True)
@@ -485,7 +525,9 @@ class WebSecAuditSuite(ctk.CTk):
         
         finally:
             self.scan_running = False
+            self.stop_scan_flag = False
             self.scan_button.configure(state="normal", text="🚀 Start Scan")
+            self.stop_button.configure(state="disabled")
     
     def _update_progress(self, value):
         """Actualiza barra de progreso"""
@@ -577,7 +619,7 @@ def main():
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("blue")
     
-    logger.info("Iniciando WebSecAuditSuite v2.0...")
+    logger.info("Iniciando WebSecAudit-RF")
     
     app = WebSecAuditSuite()
     app.mainloop()
