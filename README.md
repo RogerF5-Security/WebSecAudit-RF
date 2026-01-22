@@ -6,9 +6,25 @@
 
 **Suite profesional de auditoría de seguridad web** con interfaz gráfica moderna, detección avanzada de vulnerabilidades, evasión de WAF y generación de reportes ejecutivos HTML.
 
-Desarrollado por **Roger F5** | [GitHub](https://github.com/RogerF5)
+Desarrollado por **Roger F5** | [GitHub](https://github.com/RogerF5-Security)
+![WebSecAuditSuite Screenshot](docs/screenshot.png)
+## 📸 Galería de la Aplicación
 
+<details>
+<summary><b>👀 Haz clic aquí para ver las capturas de pantalla</b></summary>
+<br>
 
+| **Inicio & Dashboard** | **Escaneo & Configuración** |
+|:---:|:---:|
+| <img src="./Home.png" width="400"> <br> *Vista Principal* | <img src="./Scanning.png" width="400"> <br> *Escaneo en Tiempo Real* |
+| <img src="./Dashboard.png" width="400"> <br> *Métricas de Seguridad* | <img src="./Settings.png" width="400"> <br> *Ajustes Avanzados* |
+
+| **Reportes & Autenticación** |
+|:---:|
+| <img src="./Report.png" width="850"> <br> *Reporte Ejecutivo Generado* |
+| <img src="./Auth.png" width="850"> <br> *Gestión de Credenciales* |
+
+</details>
 ---
 
 ## 📋 Tabla de Contenidos
