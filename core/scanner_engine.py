@@ -27,6 +27,7 @@ class ScannerEngine:
         }
         self.progress_callback: Optional[Callable] = None
         self.status_callback: Optional[Callable] = None
+        self.stop_flag = False  # Flag para detener escaneo
     
     def register_plugin(self, plugin: BasePlugin):
         """Registra un plugin en el motor"""
@@ -67,10 +68,19 @@ class ScannerEngine:
             total_plugins = len(self.plugins)
             
             for idx, plugin in enumerate(self.plugins):
+                # Verificar si se solicitó detener
+                if self.stop_flag:
+                    logger.warning("Scan detenido por usuario")
+                    self._update_status("Scan detenido por usuario")
+                    break
+                
                 logger.info(f"Ejecutando plugin: {plugin.name}")
                 self._update_status(f"Ejecutando: {plugin.name}")
                 
                 try:
+                    # Pasar flag de stop al plugin
+                    plugin.stop_flag = self.stop_flag
+                    
                     # Si es el crawler, guardar URLs descubiertas
                     if plugin.name == "Web Crawler":
                         findings = await plugin.scan(target_url, client)
@@ -105,8 +115,13 @@ class ScannerEngine:
         ).total_seconds()
         self.scan_stats["vulnerabilities_found"] = len(self.all_findings)
         
-        logger.info(f"Escaneo completado. Vulnerabilidades: {len(self.all_findings)}")
-        self._update_status("Escaneo completado")
+        if self.stop_flag:
+            logger.info(f"Escaneo detenido. Vulnerabilidades parciales: {len(self.all_findings)}")
+            self._update_status("Escaneo detenido por usuario")
+        else:
+            logger.info(f"Escaneo completado. Vulnerabilidades: {len(self.all_findings)}")
+            self._update_status("Escaneo completado")
+        
         self._update_progress(100)
         
         return self._generate_results()

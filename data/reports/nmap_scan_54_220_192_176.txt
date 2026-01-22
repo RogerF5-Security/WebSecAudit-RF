@@ -1,20 +1,13 @@
-# Nmap 7.98 scan initiated Thu Jan 22 13:39:13 2026 as: nmap -sV -v --script=vuln,discovery,http-waf-detect,http-security-headers,ssl-enum-ciphers -Pn -T4 --max-retries 1 --host-timeout 10m -p 21,22,23,25,53,80,110,135,139,143,443,445,465,587,993,995,1433,1521,3306,3389,5432,5900,8080,8443,8888,27017,27018,6379,11211,9200,9300 -oN C:\\Users\\R0G3R\\Documents\\Tools\\AuditRF\\data\\reports\\nmap_scan_54_220_192_176.txt 54.220.192.176
+# Nmap 7.98 scan initiated Thu Jan 22 14:32:24 2026 as: nmap -sV -v --script=vuln,discovery,http-waf-detect,http-security-headers,ssl-enum-ciphers -Pn -T4 --max-retries 1 --host-timeout 10m -p 21,22,23,25,53,80,110,135,139,143,443,445,465,587,993,995,1433,1521,3306,3389,5432,5900,8080,8443,8888,27017,27018,6379,11211,9200,9300 -oN C:\\Users\\R0G3R\\Documents\\Tools\\AuditRF\\data\\reports\\nmap_scan_54_220_192_176.txt 54.220.192.176
 Pre-scan script results:
-|_hostmap-robtex: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
-| targets-sniffer: Sniffed 6 address(es). 
-| 192.168.252.30
-| 224.0.0.1
-| fe80::205:9aff:fe3c:7a00
-| c0a8:fc1e::
-| 10.252.220.10
-|_10.31.138.53
-|_http-robtex-shared-ns: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
 | targets-asn: 
 |_  targets-asn.asn is a mandatory parameter
 Bug in lltd-discovery: no string output.
-Nmap scan report for ec2-54-220-192-176.eu-west-1.compute.amazonaws.com (54.220.192.176)
-Host is up (0.049s latency).
-Skipping host ec2-54-220-192-176.eu-west-1.compute.amazonaws.com (54.220.192.176) due to host timeout
-Read data files from: C:\Program Files (x86)\Nmap
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Thu Jan 22 13:49:39 2026 -- 1 IP address (1 host up) scanned in 625.44 seconds
+|_hostmap-robtex: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
+| targets-sniffer: Sniffed 5 address(es). 
+| fe80::205:9aff:fe3c:7a00
+| 192.168.252.30
+| c0a8:fc1e::
+| 10.31.138.53
+|_10.252.220.10
+|_http-robtex-shared-ns: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/

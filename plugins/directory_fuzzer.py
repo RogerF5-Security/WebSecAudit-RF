@@ -80,6 +80,9 @@ class DirectoryFuzzer(BasePlugin):
         semaphore = asyncio.Semaphore(20)  # Máximo 20 requests concurrentes
         
         async def bounded_test(url):
+            # Verificar stop flag antes de cada request
+            if self.stop_flag:
+                return
             async with semaphore:
                 return await self._test_url(url, client)
         

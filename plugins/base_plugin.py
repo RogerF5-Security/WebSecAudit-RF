@@ -56,6 +56,7 @@ class BasePlugin(ABC):
         self.description = description
         self.enabled = True
         self.findings: List[Finding] = []
+        self.stop_flag = False  # Flag para detener el plugin
         self.stats = {
             "requests_sent": 0,
             "vulnerabilities_found": 0,
