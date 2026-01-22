@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/RogerF5/WebSecAuditSuite)
 
-**Suite de auditoría de seguridad web** con interfaz gráfica, detección avanzada de vulnerabilidades, evasión de WAF y generación de reportes ejecutivos HTML.
+**Suite de auditoría de seguridad web** con interfaz gráfica, detección de vulnerabilidades y generación de reportes HTML.
 Desarrollado por **Roger F5** | [GitHub](https://github.com/RogerF5-Security)
 ---
 
