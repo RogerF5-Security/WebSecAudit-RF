@@ -617,20 +617,10 @@ in the Software without restriction...
 
 ---
 
-## 📞 Contacto & Soporte
-
-- **GitHub Issues**: [Reportar bugs](https://github.com/RogerF5/WebSecAuditSuite/issues)
-- **Discussions**: [Preguntas y sugerencias](https://github.com/RogerF5/WebSecAuditSuite/discussions)
-- **Email**: roger.f5.security@gmail.com
-- **Twitter**: [@RogerF5Sec](https://twitter.com/RogerF5Sec)
-
----
-
 ## 🌟 Agradecimientos
 
 - **Anthropic Claude** - Asistencia en desarrollo
 - **OWASP** - Frameworks de seguridad
-- **Comunidad de InfoSec** - Feedback y testing
 
 ---
 
