@@ -265,7 +265,7 @@ logger.error("Error")
 - [ ] Actualizaste README si es necesario
 - [ ] Commit messages son descriptivos
 - [ ] No hay secrets/credentials en el código
-- [ ] El código funciona en Python 3.8+
+- [ ] El código y las dependencias funcionan en el entorno Python 3.11 validado en CI
 
 ## 📞 Preguntas
 
