@@ -1,0 +1,49 @@
+name: Validate Python dependencies
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip check
+      - name: Compile application
+        run: python -m compileall -q main.py config core gui plugins reports utils
+      - name: Check imports and offline library contracts
+        run: |
+          python - <<'PY'
+          import asyncio
+          import main
+          import brotli
+          from PIL import Image
+          from lxml import etree
+          from jinja2 import Template
+          from core.http_client import AdvancedHTTPClient
+          assert brotli.decompress(brotli.compress(b"dependency smoke test")) == b"dependency smoke test"
+          assert Image.new("RGB", (4, 4)).resize((2, 2), Image.Resampling.LANCZOS).size == (2, 2)
+          assert etree.fromstring(b"<root/>").tag == "root"
+          assert Template("{{ value }}").render(value="ok") == "ok"
+          async def check_session():
+              async with AdvancedHTTPClient() as client:
+                  assert not client.session.closed
+          asyncio.run(check_session())
+          print("DEPENDENCY_SMOKE_OK; no scan or outbound application requests executed")
+          PY
