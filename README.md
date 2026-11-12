@@ -1,6 +1,6 @@
 # 🛡️ WebSecAudit-RF
 
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+[![Python Version](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/RogerF5/WebSecAuditSuite)
 
@@ -121,7 +121,7 @@ Desarrollado por **Roger F5 & IA** | [GitHub](https://github.com/RogerF5-Securit
 
 ### Requisitos Previos
 
-- **Python 3.8+** ([Descargar](https://www.python.org/downloads/))
+- **Python 3.11** (entorno validado en CI; otras versiones requieren validación) ([Descargar](https://www.python.org/downloads/))
 - **Nmap** (Opcional, para escaneo de infraestructura)
   - **Linux/macOS**: `sudo apt install nmap` o `brew install nmap`
   - **Windows**: [Descargar instalador](https://nmap.org/download.html)
@@ -130,8 +130,8 @@ Desarrollado por **Roger F5 & IA** | [GitHub](https://github.com/RogerF5-Securit
 
 ```bash
 # 1. Clonar repositorio
-git clone https://github.com/RogerF5/WebSecAudit-RF.git
-cd WebSecAuditSuite
+git clone https://github.com/RogerF5-Security/WebSecAudit-RF.git
+cd WebSecAudit-RF
 
 # 2. Crear entorno virtual (recomendado)
 python -m venv venv
@@ -157,14 +157,20 @@ python main.py
 
 ### Instalación Manual de Dependencias
 
-Si prefieres instalar manualmente:
+Utiliza la lista de dependencias del repositorio para conservar las versiones validadas:
 
 ```bash
-pip install aiohttp==3.9.1 beautifulsoup4==4.12.2 customtkinter==5.2.1 \
-    matplotlib==3.8.2 brotli==1.1.0 pycryptodome==3.19.0 jinja2==3.1.2
+python -m pip install -r requirements.txt
+python -m pip check
 ```
 
 ---
+
+La comprobación de dependencias instala el archivo completo en Python 3.11, verifica
+consistencia con `pip check`, compila los módulos y comprueba imports y contratos
+básicos de bibliotecas sin iniciar escaneos. Se retiraron `cchardet` (no utilizado
+y con error de compilación en Python 3.11) y `brotlipy` (proveedor duplicado del
+módulo `brotli`); se conserva `brotli` para la descompresión HTTP.
 
 ## 🎯 Uso Rápido
 
